@@ -12,7 +12,7 @@
         <!--Featured-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Featured" id="BYZ-38-t0r" customClass="ViewController" customModule="ticket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Featured" id="BYZ-38-t0r" customClass="FeaturedViewController" customModule="ticket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1239"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                                                             <inset key="sectionInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2Ek-1c-aaB">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popularCell" id="2Ek-1c-aaB" customClass="PopularCollectionViewCell" customModule="ticket" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="0.0" width="200" height="140"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="toc-IF-E0d">
@@ -76,10 +76,13 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eso-vL-rbJ">
-                                                                            <rect key="frame" x="8" y="8" width="184" height="99.5"/>
+                                                                            <rect key="frame" x="8" y="8" width="184" height="99"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="Eso-vL-rbJ" secondAttribute="height" multiplier="184:99" id="Qx6-tA-s1X"/>
+                                                                            </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ik9-SW-4gc">
-                                                                            <rect key="frame" x="117.5" y="111.5" width="74.5" height="20.5"/>
+                                                                            <rect key="frame" x="8" y="111" width="184" height="21"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -92,10 +95,15 @@
                                                                         <constraint firstItem="Eso-vL-rbJ" firstAttribute="leading" secondItem="toc-IF-E0d" secondAttribute="leading" constant="8" id="bq2-Wa-R7t"/>
                                                                         <constraint firstAttribute="bottom" secondItem="ik9-SW-4gc" secondAttribute="bottom" constant="8" id="ejd-wd-SDx"/>
                                                                         <constraint firstItem="Eso-vL-rbJ" firstAttribute="top" secondItem="toc-IF-E0d" secondAttribute="top" constant="8" id="gmW-IQ-16J"/>
+                                                                        <constraint firstItem="ik9-SW-4gc" firstAttribute="leading" secondItem="toc-IF-E0d" secondAttribute="leading" constant="8" id="rq2-BO-fp6"/>
                                                                         <constraint firstItem="ik9-SW-4gc" firstAttribute="top" secondItem="Eso-vL-rbJ" secondAttribute="bottom" constant="4" id="wRq-EQ-2lj"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
                                                                 <size key="customSize" width="200" height="140"/>
+                                                                <connections>
+                                                                    <outlet property="image" destination="Eso-vL-rbJ" id="qXe-yv-bke"/>
+                                                                    <outlet property="titleLabel" destination="ik9-SW-4gc" id="KVN-x4-OOO"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -147,7 +155,7 @@
                                                             <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tYD-9P-dez">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="nowPlayingCell" id="tYD-9P-dez" customClass="NowPlayingCollectionViewCell" customModule="ticket" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="0.0" width="251" height="114"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lM9-Il-2Sf">
@@ -175,7 +183,7 @@
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="dateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCe-xg-2a7">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="75.5" height="20.5"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                            <nil key="textColor"/>
+                                                                                            <color key="textColor" systemColor="systemGray2Color"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                     </subviews>
@@ -195,6 +203,11 @@
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
                                                                 <size key="customSize" width="251" height="114"/>
+                                                                <connections>
+                                                                    <outlet property="dateLabel" destination="DCe-xg-2a7" id="Jf3-fe-awq"/>
+                                                                    <outlet property="image" destination="ZXj-iV-haH" id="GFp-c7-cga"/>
+                                                                    <outlet property="titleLabel" destination="nMG-LA-HhX" id="oO5-Ja-Uo1"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -338,6 +351,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Featured" id="cC8-Ck-cHh"/>
                     <size key="freeformSize" width="414" height="1239"/>
+                    <connections>
+                        <outlet property="nowPlayingCollectionView" destination="Lxd-UI-lah" id="tbq-Nr-tLR"/>
+                        <outlet property="popularCollectionView" destination="OVf-2J-1jS" id="sLA-gt-CKD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,6 +406,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
