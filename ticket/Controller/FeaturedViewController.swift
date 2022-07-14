@@ -7,14 +7,17 @@
 
 import UIKit
 
-class FeaturedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FeaturedViewController: UIViewController, UICollectionViewDataSource {
     
     let popularMovies = Movie.popularMovies()
-    let NowPlayingMovies = Movie.nowPlayingMovies()
+    let nowPlayingMovies = Movie.nowPlayingMovies()
+    let upcomingMovies = Movie.upcomingMovies()
     
     
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
+    @IBOutlet weak var upcomingCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +28,17 @@ class FeaturedViewController: UIViewController, UICollectionViewDataSource, UICo
         nowPlayingCollectionView.dataSource = self
         nowPlayingCollectionView.delegate = self
         
-    }
+        upcomingCollectionView.dataSource = self
+        upcomingCollectionView.delegate = self
         
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailsViewController{
+            let movie = sender as? Movie
+            destination.movie = movie
         }
-        
-        
     }
+        
+}
     
