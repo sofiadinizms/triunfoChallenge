@@ -41,7 +41,7 @@ extension FeaturedViewController{
     fileprivate func makePopularCell(_ indexPath: IndexPath) -> PopularCollectionViewCell {
         let cell = popularCollectionView.dequeueReusableCell(withReuseIdentifier: PopularCollectionViewCell.cellIdentifier, for: indexPath) as? PopularCollectionViewCell
         
-        cell?.setup(title: popularMovies[indexPath.item].title, image: UIImage(named: popularMovies[indexPath.item].backdrop) ?? UIImage())
+        cell?.setup(title: popularMovies[indexPath.item].title, image: UIImage(named: popularMovies[indexPath.item].backdropPath) ?? UIImage())
         
         return cell ?? PopularCollectionViewCell()
     }
@@ -51,7 +51,7 @@ extension FeaturedViewController{
         
         let year: String = "\(nowPlayingMovies[indexPath.item].releaseDate.prefix(4))"
         
-        cell?.setup(image: UIImage(named: nowPlayingMovies[indexPath.item].poster) ?? UIImage(), date: year, title: nowPlayingMovies[indexPath.item].title)
+        cell?.setup(image: UIImage(named: nowPlayingMovies[indexPath.item].posterPath) ?? UIImage(), date: year, title: nowPlayingMovies[indexPath.item].title)
         
         return cell ?? NowPlayingCollectionViewCell()
     }
@@ -59,7 +59,7 @@ extension FeaturedViewController{
     fileprivate func makeUpcomingCell(_ indexPath: IndexPath) -> UpcomingCollectionViewCell {
         let cell = upcomingCollectionView.dequeueReusableCell(withReuseIdentifier: UpcomingCollectionViewCell.cellIdentifier, for: indexPath) as? UpcomingCollectionViewCell
         
-        cell?.setup(image: UIImage(named: upcomingMovies[indexPath.item].poster) ?? UIImage(), title: upcomingMovies[indexPath.item].title, date: upcomingMovies[indexPath.item].releaseDate)
+        cell?.setup(image: UIImage(named: upcomingMovies[indexPath.item].posterPath) ?? UIImage(), title: upcomingMovies[indexPath.item].title, date: upcomingMovies[indexPath.item].releaseDate)
         
         return cell ?? UpcomingCollectionViewCell()
     }
