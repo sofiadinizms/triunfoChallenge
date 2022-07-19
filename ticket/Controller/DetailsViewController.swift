@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController {
             return
         }
         
+// adicionar task pra carregar imagens
         self.title = movie.title
         self.backdropImage.image = UIImage(named:movie.backdropPath)
         self.titleLabel.text = movie.title

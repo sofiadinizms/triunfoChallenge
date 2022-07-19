@@ -10,7 +10,8 @@ import UIKit
 extension SeeAllViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return popularMovies.count
+        guard let movies = movies else { return 0 }
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -20,7 +21,9 @@ extension SeeAllViewController{
     fileprivate func makeSeeAllCell(_ indexPath: IndexPath) -> SeeAllCollectionViewCell{
         let cell = seeAllCollectionView.dequeueReusableCell(withReuseIdentifier: SeeAllCollectionViewCell.cellIdentifier, for: indexPath) as? SeeAllCollectionViewCell
         
-        cell?.setup(image: UIImage(named: popularMovies[indexPath.item].posterPath) ?? UIImage(), title: popularMovies[indexPath.item].title, date: popularMovies[indexPath.item].releaseDate, rating: popularMovies[indexPath.item].voteAverage)
+        guard let movies = movies else { return SeeAllCollectionViewCell() }
+        
+        cell?.setup(image: UIImage(named: movies[indexPath.item].posterPath) ?? UIImage(), title: movies[indexPath.item].title, date: movies[indexPath.item].releaseDate, rating: movies[indexPath.item].voteAverage)
         
         return cell ?? SeeAllCollectionViewCell()
     }

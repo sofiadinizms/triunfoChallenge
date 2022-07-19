@@ -1,28 +1,34 @@
 //
-//  SeeAllViewController.swift
+//  SearchViewController.swift
 //  ticket
 //
-//  Created by sofiadinizms on 15/07/22.
+//  Created by sofiadinizms on 18/07/22.
 //
 
 import UIKit
 
-class SeeAllViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SearchViewController: UIViewController, UICollectionViewDataSource {
+    
+    var searchResults: [Movie] = []
+    
+    @IBOutlet var searchCollectionView: UICollectionView!
+    @IBOutlet var searchBar: UISearchBar!
+    
 
-   
-    var movies: [Movie]?
-    
-    @IBOutlet var seeAllCollectionView: UICollectionView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchCollectionView.dataSource = self
+        searchCollectionView.delegate = self
+        
+        Task{
+            searchResults = await Movie.popularMoviesAPI()
+            self.searchCollectionView.reloadData()
+        }
+        
+        
 
-        seeAllCollectionView.dataSource = self
-        seeAllCollectionView.delegate = self
-        
-        self.title = "See All"
-        
+        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
