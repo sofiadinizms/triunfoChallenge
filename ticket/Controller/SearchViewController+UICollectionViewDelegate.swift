@@ -10,9 +10,9 @@ import UIKit
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let movie = searchResults[indexPath.item]
+        let movie:Movie = searchResults[indexPath.item]
         
-        self.performSegue(withIdentifier: "detailsSegue", sender: movie)
+        self.performSegue(withIdentifier: "searchDetailsSegue", sender: movie)
         
         
     }

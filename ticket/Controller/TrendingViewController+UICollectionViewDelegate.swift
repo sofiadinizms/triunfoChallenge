@@ -12,7 +12,7 @@ extension TrendingViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let movie:Movie = trendingMovies[indexPath.item]
         
-        self.performSegue(withIdentifier: "detailsSegue", sender: movie)
+        self.performSegue(withIdentifier: "trendingDetailsSegue", sender: movie)
         
     }
 }
