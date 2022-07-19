@@ -23,7 +23,7 @@ extension SeeAllViewController{
         
         guard let movies = movies else { return SeeAllCollectionViewCell() }
         
-        cell?.setup(image: UIImage(named: movies[indexPath.item].posterPath) ?? UIImage(), title: movies[indexPath.item].title, date: movies[indexPath.item].releaseDate, rating: movies[indexPath.item].voteAverage)
+        cell?.setup(image: UIImage(named: movies[indexPath.item].posterPath ?? "") ?? UIImage(), title: movies[indexPath.item].title, date: movies[indexPath.item].releaseDate ?? "", rating: movies[indexPath.item].voteAverage)
         
         return cell ?? SeeAllCollectionViewCell()
     }

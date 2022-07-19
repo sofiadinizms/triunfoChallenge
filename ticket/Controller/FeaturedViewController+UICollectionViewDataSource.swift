@@ -50,7 +50,7 @@ extension FeaturedViewController{
         cell?.setup(title: movie.title, image: UIImage())
 
         Task{
-            let imageData = await Movie.downloadImageData(withPath: movie.backdropPath)
+            let imageData = await Movie.downloadImageData(withPath: (movie.backdropPath ?? ""))
             let imagem: UIImage = UIImage(data: imageData) ?? UIImage()
             cell?.setup(title: movie.title, image: imagem)
         }
@@ -64,14 +64,14 @@ extension FeaturedViewController{
         
         let nowPlayingMovie = nowPlayingMovies[indexPath.item]
         
-        let year: String = "\(nowPlayingMovie.releaseDate.prefix(4))"
+        let year: String = "\(nowPlayingMovie.releaseDate?.prefix(4))"
         
         cell?.setup(image: UIImage(), date: year, title: nowPlayingMovie.title)
         
         Task{
-            let imageData = await Movie.downloadImageData(withPath: nowPlayingMovie.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: (nowPlayingMovie.posterPath ?? ""))
             let image:UIImage = UIImage(data: imageData) ?? UIImage()
-            cell?.setup(image: image, date: nowPlayingMovie.releaseDate, title: nowPlayingMovie.title)
+            cell?.setup(image: image, date: (nowPlayingMovie.releaseDate ?? ""), title: nowPlayingMovie.title)
         }
         
         return cell ?? NowPlayingCollectionViewCell()
@@ -82,13 +82,13 @@ extension FeaturedViewController{
         
         let upcomingMovie = upcomingMovies[indexPath.item]
         
-        cell?.setup(image: UIImage(), title: upcomingMovie.title, date: upcomingMovie.releaseDate)
+        cell?.setup(image: UIImage(), title: upcomingMovie.title, date: (upcomingMovie.releaseDate ?? ""))
         
         Task{
-            let imageData = await Movie.downloadImageData(withPath: upcomingMovie.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: (upcomingMovie.posterPath ?? ""))
             let image:UIImage = UIImage(data: imageData) ?? UIImage()
             
-            cell?.setup(image: image, title: upcomingMovie.title, date: upcomingMovie.releaseDate)
+            cell?.setup(image: image, title: upcomingMovie.title, date: (upcomingMovie.releaseDate ?? ""))
         }
         
         return cell ?? UpcomingCollectionViewCell()

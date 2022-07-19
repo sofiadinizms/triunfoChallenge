@@ -7,12 +7,14 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UICollectionViewDataSource {
+class SearchViewController: UIViewController, UICollectionViewDataSource, UISearchResultsUpdating {
     
     var searchResults: [Movie] = []
     
+    let searchController = UISearchController()
+    
     @IBOutlet var searchCollectionView: UICollectionView!
-    @IBOutlet var searchBar: UISearchBar!
+
     
 
     override func viewDidLoad() {
@@ -21,14 +23,22 @@ class SearchViewController: UIViewController, UICollectionViewDataSource {
         searchCollectionView.dataSource = self
         searchCollectionView.delegate = self
         
-        Task{
-            searchResults = await Movie.popularMoviesAPI()
-            self.searchCollectionView.reloadData()
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "busca"
+
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let title = searchController.searchBar.text else{
+            return
         }
         
-        
-
-        // Do any additional setup after loading the view.
+        Task{
+            searchResults = await Movie.searchAPI(title: title)
+            searchCollectionView.reloadData()
+            print(title)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

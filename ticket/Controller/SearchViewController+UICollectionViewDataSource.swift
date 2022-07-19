@@ -24,14 +24,14 @@ extension SearchViewController{
         
         let searchResultItem = searchResults[indexPath.item]
         
-        cell?.setup(image: UIImage(), title: searchResultItem.title, date: searchResultItem.releaseDate)
+        cell?.setup(image: UIImage(), title: searchResultItem.title, date: searchResultItem.releaseDate ?? "")
         
         Task{
-            let imageData = await Movie.downloadImageData(withPath: searchResultItem.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: searchResultItem.posterPath ?? "")
             
             let image:UIImage = UIImage(data: imageData) ?? UIImage()
             
-            cell?.setup(image: image, title: searchResultItem.title, date: searchResultItem.releaseDate)
+            cell?.setup(image: image, title: searchResultItem.title, date: searchResultItem.releaseDate ?? "")
         }
         
         return cell ?? SearchCollectionViewCell()

@@ -84,6 +84,60 @@ extension Movie {
         return []
     }
     
+    static func trendingAPI(period: String) async -> [Movie]{
+        var components = Movie.urlComponents
+        
+        components.path = "/3/trending/movie/\(period)"
+        components.queryItems = [
+            URLQueryItem.init(name: "api_key", value: Movie.apiKey)
+        ]
+        
+        let session = URLSession.shared
+        
+        do{
+            let (data, response) = try await session.data(from: components.url!)
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let trendingResults = try decoder.decode(MovieResponse.self, from: data)
+            
+            return trendingResults.results
+        } catch{
+            print(error)
+        }
+        
+        return []
+    }
+    
+    static func searchAPI(title:String) async -> [Movie]{
+        var components = Movie.urlComponents
+        
+        components.path = "/3/search/movie"
+        components.queryItems = [
+            URLQueryItem.init(name: "api_key", value: Movie.apiKey),
+            URLQueryItem(name: "query", value: title)
+        ]
+        
+        let session = URLSession.shared
+        
+        do{
+            let (data, response) = try await session.data(from: components.url!)
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let searchResult = try decoder.decode(MovieResponse.self, from: data)
+            
+            return searchResult.results
+        } catch{
+            print(error)
+        }
+        
+        return []
+    }
+    
+    
+    
     //MARK: - Download de imagem
     static func downloadImageData(withPath: String) async  -> Data{
         

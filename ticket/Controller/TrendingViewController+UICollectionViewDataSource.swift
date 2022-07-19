@@ -23,12 +23,12 @@ extension TrendingViewController:UICollectionViewDataSource{
         
         let trendingMovie = trendingMovies[indexPath.item]
         
-        cell?.setup(image: UIImage(), title: trendingMovie.title, date: trendingMovie.releaseDate)
+        cell?.setup(image: UIImage(), title: trendingMovie.title, date: trendingMovie.releaseDate ?? "")
         
         Task{
-            let imageData = await Movie.downloadImageData(withPath: trendingMovie.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: trendingMovie.posterPath ?? "")
             let image:UIImage = UIImage(data: imageData) ?? UIImage()
-            cell?.setup(image: image, title: trendingMovie.title, date: trendingMovie.releaseDate)
+            cell?.setup(image: image, title: trendingMovie.title, date: trendingMovie.releaseDate ?? "")
         }
         
         return cell ?? TrendingCollectionViewCell()

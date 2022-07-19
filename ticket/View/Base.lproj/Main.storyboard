@@ -17,8 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kmt-CA-Zjd">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Today"/>
+                                    <segment title="This week"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControllClick:" destination="Odk-4H-bNn" eventType="valueChanged" id="W3Z-9p-1Dc"/>
+                                </connections>
+                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Msc-DW-Apg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1069"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="1038"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qNK-bn-1Df">
                                     <size key="itemSize" width="414" height="114"/>
@@ -69,6 +79,7 @@
                                                                 <constraint firstAttribute="width" secondItem="fgQ-Yf-e38" secondAttribute="height" multiplier="1:1" id="5Ra-RV-cjX"/>
                                                                 <constraint firstAttribute="height" constant="24" id="7TX-lr-2Vj"/>
                                                             </constraints>
+                                                            <color key="tintColor" systemColor="systemPurpleColor"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
                                                         </button>
@@ -101,14 +112,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7Ag-2h-mgs" firstAttribute="bottom" secondItem="Msc-DW-Apg" secondAttribute="bottom" id="1eB-Yi-gYZ"/>
-                            <constraint firstItem="Msc-DW-Apg" firstAttribute="top" secondItem="7Ag-2h-mgs" secondAttribute="top" id="AaA-36-mcF"/>
+                            <constraint firstItem="Msc-DW-Apg" firstAttribute="top" secondItem="Kmt-CA-Zjd" secondAttribute="bottom" id="4xg-iY-SAQ"/>
+                            <constraint firstItem="Msc-DW-Apg" firstAttribute="top" secondItem="Kmt-CA-Zjd" secondAttribute="bottom" id="AaA-36-mcF"/>
+                            <constraint firstItem="7Ag-2h-mgs" firstAttribute="trailing" secondItem="Kmt-CA-Zjd" secondAttribute="trailing" id="LW7-gJ-3c6"/>
                             <constraint firstItem="Msc-DW-Apg" firstAttribute="leading" secondItem="7Ag-2h-mgs" secondAttribute="leading" id="OLT-KK-QwC"/>
+                            <constraint firstItem="Kmt-CA-Zjd" firstAttribute="leading" secondItem="7Ag-2h-mgs" secondAttribute="leading" id="TnB-8F-WUy"/>
                             <constraint firstItem="7Ag-2h-mgs" firstAttribute="trailing" secondItem="Msc-DW-Apg" secondAttribute="trailing" id="Zyh-0K-FhO"/>
+                            <constraint firstItem="Kmt-CA-Zjd" firstAttribute="top" secondItem="7Ag-2h-mgs" secondAttribute="top" id="f5d-wR-7Hc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trending" id="mKB-H1-ZQi"/>
                     <size key="freeformSize" width="414" height="1240"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="Kmt-CA-Zjd" id="l1N-nr-H2n"/>
                         <outlet property="trendingCollectionView" destination="Msc-DW-Apg" id="xhs-PS-Rkg"/>
                         <segue destination="PJ8-5K-7b6" kind="show" identifier="trendingDetailsSegue" id="bk0-H7-7H3"/>
                     </connections>
@@ -156,10 +172,8 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                         <constraints>
                                                             <constraint firstItem="ZXo-Hp-jx1" firstAttribute="leading" secondItem="kq8-9E-4cc" secondAttribute="leading" constant="16" id="LxZ-Dy-S2V"/>
                                                             <constraint firstAttribute="bottom" secondItem="ZXo-Hp-jx1" secondAttribute="bottom" id="l0G-nk-1JZ"/>
@@ -169,7 +183,7 @@
                                                     </view>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OVf-2J-1jS">
                                                         <rect key="frame" x="0.0" y="51" width="414" height="140"/>
-                                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="140" id="tTx-eA-hnk"/>
                                                         </constraints>
@@ -216,7 +230,6 @@
                                                         </cells>
                                                     </collectionView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.89019607840000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bx1-wu-YKC">
                                                 <rect key="frame" x="0.0" y="192" width="414" height="413"/>
@@ -235,6 +248,7 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyO-cR-sFM">
                                                                         <rect key="frame" x="315" y="0.0" width="67" height="70"/>
+                                                                        <color key="tintColor" systemColor="systemPurpleColor"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="See all"/>
                                                                         <connections>
@@ -242,7 +256,6 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                                             </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -341,6 +354,7 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibz-sk-jIF">
                                                                         <rect key="frame" x="315" y="0.0" width="67" height="50"/>
+                                                                        <color key="tintColor" systemColor="systemPurpleColor"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="See all"/>
                                                                         <connections>
@@ -348,7 +362,6 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                             </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -361,7 +374,7 @@
                                                     </view>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t5l-ZQ-aeh">
                                                         <rect key="frame" x="0.0" y="51" width="414" height="299"/>
-                                                        <color key="backgroundColor" red="1" green="0.89019607840000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="299" id="z1Y-sh-W1b"/>
                                                         </constraints>
@@ -414,7 +427,6 @@
                                                                         <constraint firstAttribute="trailing" secondItem="bd0-IV-O2X" secondAttribute="trailing" constant="8" id="ypR-uF-5Lr"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
-                                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                                 <connections>
                                                                     <outlet property="dateLabel" destination="nBU-8C-zJz" id="5fZ-rA-8rg"/>
                                                                     <outlet property="imageView" destination="bd0-IV-O2X" id="YD1-Hl-75N"/>
@@ -441,6 +453,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemPurpleColor"/>
                         <constraints>
                             <constraint firstItem="z9F-Hg-egG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3vt-K7-8l7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="z9F-Hg-egG" secondAttribute="leading" id="7WM-9T-wSb"/>
@@ -458,6 +471,7 @@
                         <outlet property="upcomingCollectionView" destination="t5l-ZQ-aeh" id="nTd-nC-YqO"/>
                         <outlet property="upcomingSeeAll" destination="Ibz-sk-jIF" id="qgX-sf-7s3"/>
                         <segue destination="PJ8-5K-7b6" kind="show" identifier="detailsSegue" id="Jam-Mo-pjw"/>
+                        <segue destination="ofB-NL-i9Q" kind="show" identifier="posterSegue" id="wys-bh-ufA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -539,11 +553,15 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NtW-aL-Iea">
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NtW-aL-Iea">
                                                         <rect key="frame" x="16" y="8" width="124" height="192"/>
+                                                        <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="NtW-aL-Iea" secondAttribute="height" multiplier="125:193" id="kkZ-kX-A9m"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="lbM-nB-KB6" appends="YES" id="yFP-cu-qUM"/>
+                                                        </connections>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -643,6 +661,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKj-3G-u0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lbM-nB-KB6">
+                    <connections>
+                        <action selector="didTapImageView:" destination="PJ8-5K-7b6" id="3zw-El-ZtI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3652.1739130434785" y="84.709821428571431"/>
         </scene>
@@ -762,6 +785,39 @@
             </objects>
             <point key="canvasLocation" x="4452.1739130434789" y="85.714285714285708"/>
         </scene>
+        <!--Poster View Controller-->
+        <scene sceneID="2v1-93-ldp">
+            <objects>
+                <viewController id="ofB-NL-i9Q" customClass="PosterViewController" customModule="ticket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Jl-4P-SK6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="THn-k2-2vU">
+                                <rect key="frame" x="0.0" y="140" width="414" height="621"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="THn-k2-2vU" secondAttribute="height" multiplier="2:3" id="zxy-fQ-zeh"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lEB-XE-pOa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="THn-k2-2vU" firstAttribute="leading" secondItem="lEB-XE-pOa" secondAttribute="leading" id="EW1-3g-Ai7"/>
+                            <constraint firstItem="THn-k2-2vU" firstAttribute="top" secondItem="lEB-XE-pOa" secondAttribute="top" id="F3K-m6-GQL"/>
+                            <constraint firstItem="lEB-XE-pOa" firstAttribute="trailing" secondItem="THn-k2-2vU" secondAttribute="trailing" id="WIT-y5-X6i"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mrs-Fl-D7Q"/>
+                    <size key="freeformSize" width="414" height="1240"/>
+                    <connections>
+                        <outlet property="posterImage" destination="THn-k2-2vU" id="H00-JA-eaW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Wq-Pt-Vhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5237.68115942029" y="81.696428571428569"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rg1-k4-pGJ">
             <objects>
@@ -771,6 +827,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemPurpleColor"/>
+                        <color key="selectedImageTintColor" systemColor="systemPurpleColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="fxB-vg-iD7" kind="relationship" relationship="viewControllers" id="EVj-Of-vM3"/>
@@ -791,6 +849,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fSQ-t4-Szn">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemPurpleColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -809,12 +868,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="b4L-ja-ycq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mwE-Pw-rJW">
-                                <rect key="frame" x="0.0" y="139" width="414" height="1018"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="1069"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XlG-ty-fpV">
                                     <size key="itemSize" width="414" height="114"/>
@@ -863,6 +918,7 @@
                                                                 <constraint firstAttribute="width" secondItem="ZD3-aR-SC9" secondAttribute="height" multiplier="24:24" id="OnD-os-KQz"/>
                                                                 <constraint firstAttribute="height" constant="24" id="XYV-CU-Aaj"/>
                                                             </constraints>
+                                                            <color key="tintColor" systemColor="systemPurpleColor"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system" title=""/>
                                                         </button>
@@ -893,19 +949,15 @@
                         <viewLayoutGuide key="safeArea" id="AQi-k4-2b0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="b4L-ja-ycq" firstAttribute="trailing" secondItem="AQi-k4-2b0" secondAttribute="trailing" id="0ww-6b-JJd"/>
-                            <constraint firstItem="b4L-ja-ycq" firstAttribute="leading" secondItem="AQi-k4-2b0" secondAttribute="leading" id="5gt-jv-2dF"/>
                             <constraint firstItem="AQi-k4-2b0" firstAttribute="bottom" secondItem="mwE-Pw-rJW" secondAttribute="bottom" id="79p-LX-upq"/>
                             <constraint firstItem="mwE-Pw-rJW" firstAttribute="trailing" secondItem="AQi-k4-2b0" secondAttribute="trailing" id="LAA-rv-mpU"/>
                             <constraint firstItem="mwE-Pw-rJW" firstAttribute="leading" secondItem="AQi-k4-2b0" secondAttribute="leading" id="N7c-av-7Id"/>
-                            <constraint firstItem="b4L-ja-ycq" firstAttribute="top" secondItem="AQi-k4-2b0" secondAttribute="top" id="eaO-Es-nLu"/>
-                            <constraint firstItem="mwE-Pw-rJW" firstAttribute="top" secondItem="b4L-ja-ycq" secondAttribute="bottom" id="zx0-dX-dWI"/>
+                            <constraint firstItem="mwE-Pw-rJW" firstAttribute="top" secondItem="AQi-k4-2b0" secondAttribute="top" id="dKJ-in-G8P"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="2gA-sf-wog"/>
                     <size key="freeformSize" width="414" height="1240"/>
                     <connections>
-                        <outlet property="searchBar" destination="b4L-ja-ycq" id="ihJ-WW-kDV"/>
                         <outlet property="searchCollectionView" destination="mwE-Pw-rJW" id="XbJ-zy-Bwm"/>
                         <segue destination="PJ8-5K-7b6" kind="show" identifier="searchDetailsSegue" id="0nB-oU-o3T"/>
                     </connections>
@@ -939,9 +991,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mt0-2K-i01" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="aYU-Fr-9CD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rfj-K0-yGr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Rfj-K0-yGr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemPurpleColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -955,7 +1008,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mOz-pA-etl"/>
-        <segue reference="0nB-oU-o3T"/>
+        <segue reference="Jam-Mo-pjw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1g0dhYtq4irTY1GPXvft6k4YLjm" width="500" height="750"/>
@@ -979,17 +1032,8 @@
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

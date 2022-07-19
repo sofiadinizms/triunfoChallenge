@@ -10,6 +10,7 @@ import UIKit
 class TrendingViewController: UIViewController{
     
     @IBOutlet var trendingCollectionView: UICollectionView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
     
     var trendingMovies: [Movie] = []
     
@@ -21,10 +22,29 @@ class TrendingViewController: UIViewController{
         trendingCollectionView.delegate = self
         
         Task{
-            trendingMovies = await Movie.popularMoviesAPI()
+            trendingMovies = await Movie.trendingAPI(period: "day")
             self.trendingCollectionView.reloadData()
         }
     }
+    
+    @IBAction func segmentControllClick(_ sender: Any) {
+            switch segmentedControl.selectedSegmentIndex {
+            case 0:
+                Task{
+                    trendingMovies = await Movie.trendingAPI(period: "day")
+                    self.trendingCollectionView.reloadData()
+                }
+            case 1 :
+                Task{
+                    trendingMovies = await Movie.trendingAPI(period: "week")
+                    self.trendingCollectionView.reloadData()
+                }
+            default:
+                break
+            }
+            
+            
+        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailsViewController{
