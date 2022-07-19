@@ -471,7 +471,6 @@
                         <outlet property="upcomingCollectionView" destination="t5l-ZQ-aeh" id="nTd-nC-YqO"/>
                         <outlet property="upcomingSeeAll" destination="Ibz-sk-jIF" id="qgX-sf-7s3"/>
                         <segue destination="PJ8-5K-7b6" kind="show" identifier="detailsSegue" id="Jam-Mo-pjw"/>
-                        <segue destination="ofB-NL-i9Q" kind="show" identifier="posterSegue" id="wys-bh-ufA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -658,6 +657,7 @@
                         <outlet property="posterImage" destination="NtW-aL-Iea" id="Ryk-WL-Hz7"/>
                         <outlet property="ratingLabel" destination="dIu-i5-P0z" id="yeu-QW-KVj"/>
                         <outlet property="titleLabel" destination="ChO-Rb-1UT" id="HrP-VD-K9q"/>
+                        <segue destination="ofB-NL-i9Q" kind="show" identifier="posterSegue" id="6GG-OY-RPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKj-3G-u0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -794,7 +794,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="THn-k2-2vU">
-                                <rect key="frame" x="0.0" y="140" width="414" height="621"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="621"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="THn-k2-2vU" secondAttribute="height" multiplier="2:3" id="zxy-fQ-zeh"/>
                                 </constraints>

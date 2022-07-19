@@ -10,12 +10,19 @@ import UIKit
 class PosterViewController: UIViewController {
     @IBOutlet var posterImage: UIImageView!
     
-    var image:UIImage?
+    var movie:Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Task{
+            let posterData = await Movie.downloadImageData(withPath: (movie?.posterPath ?? ""))
+            
+            let poster:UIImage = UIImage(data: posterData) ?? UIImage()
+            
+            self.posterImage.image = poster
+        }
 
-        posterImage.image = image
     }
     
 

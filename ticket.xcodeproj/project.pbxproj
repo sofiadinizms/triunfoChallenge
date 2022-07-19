@@ -122,6 +122,16 @@
 			path = ticket;
 			sourceTree = "<group>";
 		};
+		BD350AC0288752280062F850 /* Featured */ = {
+			isa = PBXGroup;
+			children = (
+				BD11F9062873725900E37C07 /* FeaturedViewController.swift */,
+				BD821120287DC1600028547D /* FeaturedViewController+UICollectionViewDataSource.swift */,
+				BD2F7BCE287EF4A600709C99 /* FeaturedViewController+UICollectionViewDelegate.swift */,
+			);
+			name = Featured;
+			sourceTree = "<group>";
+		};
 		BD821110287C47AC0028547D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,9 +150,7 @@
 		BD821111287C488C0028547D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BD11F9062873725900E37C07 /* FeaturedViewController.swift */,
-				BD821120287DC1600028547D /* FeaturedViewController+UICollectionViewDataSource.swift */,
-				BD2F7BCE287EF4A600709C99 /* FeaturedViewController+UICollectionViewDelegate.swift */,
+				BD350AC0288752280062F850 /* Featured */,
 				BD2F7BCC287EF22200709C99 /* DetailsViewController.swift */,
 				BD6BD14F2881A24800A55362 /* SeeAllViewController.swift */,
 				BD6BD1532881AFDF00A55362 /* SeeAllViewController+UICollectionViewDataSource.swift */,

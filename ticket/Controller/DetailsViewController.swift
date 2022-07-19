@@ -18,6 +18,7 @@ class DetailsViewController: UIViewController {
     var movie:Movie?
     
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
+        print("segue")
         self.performSegue(withIdentifier: "posterSegue", sender: movie)
 
     }
@@ -55,8 +56,8 @@ class DetailsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? PosterViewController{
-            let poster = sender as? UIImage
-            destination.posterImage.image = poster
+            let movie = sender as? Movie
+            destination.movie = movie
         }
     }
 
