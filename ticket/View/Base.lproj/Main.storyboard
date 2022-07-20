@@ -23,6 +23,8 @@
                                     <segment title="Today"/>
                                     <segment title="This week"/>
                                 </segments>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
+                                <color key="selectedSegmentTintColor" systemColor="systemPurpleColor"/>
                                 <connections>
                                     <action selector="segmentControllClick:" destination="Odk-4H-bNn" eventType="valueChanged" id="W3Z-9p-1Dc"/>
                                 </connections>
@@ -399,11 +401,11 @@
                                                                                 <constraint firstAttribute="height" constant="260" id="77K-Bx-lrm"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PR6-PJ-2A1">
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PR6-PJ-2A1">
                                                                             <rect key="frame" x="8" y="272" width="184" height="19"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWX-D0-jhy">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="144.5" height="19"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWX-D0-jhy">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="140.5" height="19"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -542,7 +544,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qCh-W5-NfU">
                                                                 <rect key="frame" x="0.0" y="-0.5" width="22" height="20"/>
-                                                                <color key="tintColor" systemColor="labelColor"/>
+                                                                <color key="tintColor" systemColor="systemYellowColor"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="ratingLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIu-i5-P0z">
                                                                 <rect key="frame" x="30" y="0.0" width="212" height="20.5"/>
@@ -726,6 +728,7 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-KU-5zI">
                                                                     <rect key="frame" x="0.0" y="-0.5" width="20" height="20"/>
+                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="20" id="6G3-BO-Opg"/>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="7l7-9E-anT"/>
@@ -975,6 +978,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B5m-8N-dVi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemPurpleColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1034,6 +1038,9 @@
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
